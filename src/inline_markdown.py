@@ -12,7 +12,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
         else:
             #nodes.append(node)
             for x in node.text.split(delimiter):
-                if x.startswith(" ") or x.endswith(" "):
+                if x.startswith(" ") or x.endswith(" ") or x.startswith(", ") or x.startswith(". ") or x.startswith("(") or x.startswith(")"):
                     result.append(TextNode(x, TextType.TEXT))
                 else:
                     if x != "":
@@ -86,10 +86,12 @@ def split_nodes_link(old_nodes):
                 else:
                     if x != "":
                         match = extract_markdown_links(x)
+                        #print("match link", match)
                         if match == []:
                             result.append(node)
                         else:
                             result.append(TextNode(match[0][0], TextType.LINK, match[0][1]))
+                            #print(result)
     return result
 
 def text_to_textnodes(text):

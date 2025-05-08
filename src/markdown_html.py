@@ -23,7 +23,7 @@ def block_type_divider(block):
         case _: raise ValueError("invalid block type")
 
 def p_html(block):
-    text = " ".join(block.split())
+    text = " ".join(block.split("\n"))
     text_nodes = text_to_textnodes(text)
     return ParentNode("p", [text_node_to_html_node(node) for node in text_nodes])
 

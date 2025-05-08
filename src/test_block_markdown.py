@@ -130,6 +130,7 @@ the **same** even with inline stuff
             "<div><pre><code>This is text that _should_ remain\nthe **same** even with inline stuff\n</code></pre></div>"
         )
 
+
     def test_paragraph(self):
         md = """
 This is **bolded** paragraph
@@ -145,6 +146,17 @@ tag here
             "<div><p>This is <b>bolded</b> paragraph text in a p tag here</p></div>"
         )
 
+    def test_paragraph2(self):
+        md = """
+This is **bolded** and _italic_ text
+"""
+
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+        self.assertEqual(
+            html,
+            "<div><p>This is <b>bolded</b> and <i>italic</i> text</p></div>"
+        )
 
     def test_headings(self):
         md = """

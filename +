@@ -73,15 +73,15 @@ def generate_page(from_path, template_path, dest_path):
 #    with open(dest_path + "/index.html", "w") as file: file.write(template)
 
 def main():
-#    print("###################################")
-#    print()
-#    md = "This series, a cornerstone of what I, in my many years as an **Archmage**, have come to recognize as the pinnacle of imaginative creation, stands unrivaled in its depth, complexity, and the sheer scope of its _legendarium_. As we embark on this exploration, let us delve into the reasons why this monumental work is celebrated as the finest in the world."
-#    node = markdown_to_html_node(md)
-#    print(node)
-#    print()
-#    print(node.to_html())
-#    print()
-#    print("########################################")
+    print("###################################")
+    print()
+    md = "This series, a cornerstone of what I, in my many years as an **Archmage**, have come to recognize as the pinnacle of imaginative creation, stands unrivaled in its depth, complexity, and the sheer scope of its _legendarium_. As we embark on this exploration, let us delve into the reasons why this monumental work is celebrated as the finest in the world."
+    node = markdown_to_html_node(md)
+    print(node)
+    print()
+    print(node.to_html())
+    print()
+    print("########################################")
 
     static_to_public()
     generate_page(from_path, template_path, dest_path)
