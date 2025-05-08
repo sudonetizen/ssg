@@ -1,6 +1,11 @@
 from textnode import TextNode, TextType
 from htmlnode import HTMLNode, LeafNode, ParentNode
-from inline_markdown import split_nodes_delimiter, extract_markdown_images, split_nodes_image, text_to_textnodes
+from inline_markdown import split_nodes_delimiter, extract_markdown_images, split_nodes_image, text_to_textnodes, text_to_textnodes2
+from markdown_html import markdown_to_html_node 
+
+
+
+
 
 def main():
     text_node_obj = TextNode("This is some anchor text", TextType.LINK, "https://www.boot.dev")
@@ -45,8 +50,59 @@ def main():
     print()
     
     text = "This is **text** with an _italic_ word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)"
-    node = TextNode(text, TextType.TEXT)
-    new_nodes = text_to_textnodes(node)
+    new_nodes = text_to_textnodes(text)
     print(new_nodes)
+    print()
+
+    print("#############################")
+
+    md = """
+This is **bolded** paragraph
+text in a p
+tag here 
+
+This is another paragraph with _italic_ text and `code` here
+
+"""
+    # md = "This is another paragraph with _italic_ text and `code` here"
+    node = markdown_to_html_node(md)
+    print(node)
+    print()
+    print(node.to_html())
+
+    print("#########################################")
+
+    md = """
+# this is an h1
+
+this is paragraph text
+
+## this is an h2
+"""
+
+    node = markdown_to_html_node(md)
+    print(node)
+    print()
+    print(node.to_html())
+    print()
+    print("###########################################################")
+    print()
+
+    
+    md = """
+- This is a list
+- with items
+- and _more_ items
+
+1. This is an `ordered` list
+2. with items
+3. and more items
+
+"""
+    node = markdown_to_html_node(md)
+    print(node)
+    print()
+    print(node.to_html())
+    print()
 
 main()
