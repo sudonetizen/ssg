@@ -56,8 +56,8 @@ def generate_page(basepath, from_path, template_path, dest_path):
             template = template.replace("{{ Content }}", hc)
 
             # basepath
-            template = template.replace('href="/', f'href="{basepath}')
-            template = template.replace('src="/', f'src="{basepath}')
+            template = template.replace('href="/', f'href="/{basepath}')
+            template = template.replace('src="/', f'src="/{basepath}')
 
             with open(dest_path + "/index.html", "w") as file: file.write(template)
         else:
