@@ -8,7 +8,7 @@ import sys
 
 # directories
 current_directory = os.getcwd()
-public_directory = current_directory + "/docs" #current_directory + "/public"
+public_directory = current_directory + "/" #current_directory + "/public"
 static_directory = current_directory + "/static"
 from_path = current_directory + "/content/"
 template_path = current_directory + "/template.html"
