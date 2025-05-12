@@ -93,7 +93,7 @@ def main(basepath):
     static_to_public()
     generate_page(basepath, from_path, template_path, dest_path)
 
-basepath = sys.argv[1] if len(sys.argv) > 1  else "/"
+basepath = f"/{sys.argv[1]}" if len(sys.argv) > 1  else "/"
 main(basepath)
 
 
