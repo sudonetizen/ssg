@@ -42,7 +42,7 @@ def extract_title(markdown_line):
     if not "# " in markdown_line: raise Exception("title not found")
     else: return markdown_line[2:].strip()       
 
-def generate_page(from_path, template_path, dest_path): #basepath  
+def generate_page(basepath, from_path, template_path, dest_path): 
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
     files = os.listdir(from_path)
     for file in files:
@@ -56,14 +56,14 @@ def generate_page(from_path, template_path, dest_path): #basepath
             template = template.replace("{{ Content }}", hc)
 
             # basepath
-            #template = template.replace('href="/', f'href="/{basepath}')
-            #template = template.replace('src="/', f'src="/{basepath}')
+            template = template.replace('href="/', f'href="{basepath}')
+            template = template.replace('src="/', f'src="{basepath}')
 
             with open(dest_path + "/index.html", "w") as file: file.write(template)
         else:
             new_dir = os.path.join(dest_path, file)
             os.makedirs(new_dir, exist_ok=True)
-            generate_page(file_path, template_path, new_dir)    #basepath
+            generate_page(basepath, file_path, template_path, new_dir)    
 
 #    with open(from_path) as file: content = file.read()
 #    with open(template_path) as file: template = file.read()
@@ -79,7 +79,7 @@ def generate_page(from_path, template_path, dest_path): #basepath
 #
 #    with open(dest_path + "/index.html", "w") as file: file.write(template)
 
-def main():  #basepath
+def main(basepath):  
 #    print("###################################")
 #    print()
 #    md = "This series, a cornerstone of what I, in my many years as an **Archmage**, have come to recognize as the pinnacle of imaginative creation, stands unrivaled in its depth, complexity, and the sheer scope of its _legendarium_. As we embark on this exploration, let us delve into the reasons why this monumental work is celebrated as the finest in the world."
@@ -91,10 +91,10 @@ def main():  #basepath
 #    print("########################################")
 
     static_to_public()
-    generate_page(from_path, template_path, dest_path) #basepath
+    generate_page(basepath, from_path, template_path, dest_path) 
 
-#basepath = sys.argv[1] if len(sys.argv) > 1  else "/"
-main()  #basepath
+basepath = sys.argv[1] if len(sys.argv) > 1  else "/"
+main(basepath)  
 
 
 #def main():
