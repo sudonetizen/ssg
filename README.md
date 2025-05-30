@@ -14,7 +14,7 @@ Run local:
 Run via github pages
 - change and update markdown files on content folder based on your need, current markdown files are about LOTR
 - change and update static folder where currently images are saved for markdown files and css stylesheet  
-- create git repo and replace "/ssg/" on build.sh with your repo name
+- create github repo and replace "/ssg/" on build.sh with your repo name
 - run build.sh 
 - go to your repo's settings and select pages section
 - set source to main branch and docs directory
